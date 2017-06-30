@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+html,body{
+  height: 97%;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+.reperesSup{
+  width: 20px;
+  height: 20px;
+  background-color: purple;
+  border-radius: 50%;
+}
+.aloneReperes{
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+  border-radius: 50%;
+}
+.aloneReperesHighLight{
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  text-align: center;
+  line-height: 15px;
+  border-radius: 50%;
+}

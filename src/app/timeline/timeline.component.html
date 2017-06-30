@@ -1,0 +1,74 @@
+
+<div ngClass="AllTimeline">
+  <div id="top">
+    <button (click)="changeOrder()">Voir repères Récents</button>
+    <button (click)="changeOrder()">Voir repères Anciens</button>
+    <button (click)="collapseAll()">Réduire Tous</button>
+    <button (click)="clicked()">test</button>
+  </div>
+
+  <section ngClass="sectionTitle">
+    <div ngClass="divTitle">
+      <h1>Historique des crues</h1>
+    </div>
+  </section>
+  <section ngClass="timeline">
+    <!-- ANNEES -->
+      <div *ngFor="let annee of listAnneeSorted" ngClass="ulAnnees">
+          <div id="anneesBlock">
+              <time ngClass="annee" [id]="annee"> {{annee}}</time>
+              <div>
+                <button (click)="dateClick(tabDates[annee])"
+                class="btn btn-primary">{{tabDates[annee].bool ? "Reduire" : "Voir"}}</button>
+                <p [ngClass]="textBottomYearClass(tabDates[annee])"
+                style="width: 400px; overflow: hidden;">
+                Il y a un total de {{tabDates[annee].nbReperes}} repère{{tabDates[annee].nbReperes == 1 ? " "  : "s " }} sur {{tabDates[annee].compteurItems}} date{{tabDates[annee].compteurItems == 1 ? "" : "s"}}
+                </p>
+              </div>
+              <div [id]="annee" [ngClass]="anneesClass(tabDates[annee])">
+
+                <!-- ITEMS -->
+                <div *ngFor="let item of getArrayItemsSorted(tabDates[annee])">
+                  <h3 [id]="item" >{{tabItems[item].displaydate}}</h3>
+                  <div id="oldDiv">
+                      <div ngClass="simpleText">{{tabItems[item].title}}</div>
+                      <button *ngIf="isSeeButton(tabDates[annee],tabItems[item])"
+                      (click)="groupeRepereChoisi(tabItems[item])"
+                      class="btn btn-primary">{{tabItems[item].boolDisplay ? "Reduire" : "Voir"}}</button>
+                      <div [ngClass]="itemsClass(tabDates[annee],tabItems[item])">
+                        <p *ngIf="isStringItem(tabDates[annee],tabItems[item])">je suis le contenu des reperes du {{tabItems[item].date}}</p>
+
+                          <!-- REPERES -->
+                          <div *ngFor="let repere of getReperesKeysOfItem(tabItems[item])">
+                            <div *ngIf="isRepereCorrect(tabReperes[repere])">
+                              <button
+                              [ngClass]="repereButtonClass(tabReperes[repere])"
+                              [id]="repere"
+                              (click)="repereChoisi(tabItems[item],tabReperes[repere])">Voir le repère {{tabReperes[repere].id}}</button>
+                              <div [ngClass]="textRepereClass(tabReperes[repere])"
+                              *ngIf="isDisplayRepereContent(tabReperes[repere])">
+                                Voici les informations du repère {{tabReperes[repere].id}}
+                              </div>
+                            </div>
+                          </div>
+                          <p
+                          *ngIf="getNbReperesNonIdentifies(tabItems[item]) > 0" class="col-md-12">
+                          Il y a {{getNbReperesNonIdentifies(tabItems[item])}}
+                          repère{{getNbReperesNonIdentifies(tabItems[item]) == 1 ? "" : "s"}}
+                          non identifié{{getNbReperesNonIdentifies(tabItems[item]) == 1 ? "" : "s"}}
+                          pour cette date </p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
+
+
+  <button (click)="resetZoom()">Reset Zoom</button>
+  <button (click)="topTimeline()">Top Timeline</button>
+  <button (click)="clickButtonScrollTo()">Scroll To</button>
+  <button *ngIf="isBtnZoomBack(item)" (click)="goBackButtonZoom()">Zoom Précédent</button>
+  <button *ngFor="let point of _vizLotService.tabMultiPointSelected" (click)="btnTabMultiPointSelected(point)">{{point.id}}</button>

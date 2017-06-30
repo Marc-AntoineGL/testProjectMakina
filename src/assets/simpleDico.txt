@@ -1,0 +1,13 @@
+bind, bound = lier
+layer = couche de carte
+merge = fusionner
+offset = décalage
+to plot = tracer
+rely on = compter sur (qq un/chose)
+tick = coche
+tile = tuile
+triggered = déclencher
+wireframe = maquette
+scheduled = prévu
+get hold = procurer
+get a handle = attraper, mettre la main

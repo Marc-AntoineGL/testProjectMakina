@@ -1,0 +1,126 @@
+html,body{
+  height: 100%;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 2.5rem;
+}
+.AllTimeline {
+  /*aligner avec la carte*/
+  max-height: 100%;
+  display: inline-block;
+  float: left;
+  width: 40%;
+  /*debut timeline*/
+  font: normal 16px/1.5 "Helvetica Neue", sans-serif;
+  background: white;
+  color: black;
+  overflow-x: hidden;
+  padding-bottom: 50px;
+  border: 1px solid black
+}
+.sectionTitle {
+  background: #7BCCB5;
+  padding: 50px 0;
+}
+.divTitle {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.timeline{
+  width: 100%;
+}
+.ulAnnees {
+  width: 100%;
+  border-left: 5px solid #FFCBA4;
+  margin-left: 2%;
+  padding-top: 10%;
+}
+.ulAnnees + div{
+  padding: inherit;
+}
+#anneesBlock{
+  /*max-height: 98%;*/
+  display: inline-block;
+  width: 99%;
+  position: relative;
+}
+.annee{
+  color : black;
+  font-size: 150%;
+  text-decoration: underline;
+  padding-bottom: 5%;
+}
+#anneesBlock time + div{
+  padding-left: 5%;
+  display: inline-block;
+}
+#anneesBlock time + div p{
+  padding-left: 5%;
+  padding-top: 4%;
+  display: inline-block;
+  font-size: 120%;
+}
+.timeline li {
+  width: 98%
+}
+button {
+  padding-left: 0%;
+}
+/* points blancs */
+/*.circles {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: black;
+}*/
+/*cadres repères*/
+/*.timeline ul li*/ #oldDiv {
+  position: relative;
+  bottom: 0;
+  width: 92%;
+  padding: 15px;
+  background: #78C7C7;
+  border: 3px dotted red;
+}
+/* triangle sur le bord gauche*/
+.timeline ul li #oldDiv::before {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+#oldDiv {
+  left: 45px;
+}
+#oldDiv::before {
+  left: -30px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent #FFCBA4 transparent transparent;
+}
+.simpleText{
+  color : black;
+  font-size: 120%;
+}
+.buttonRepereSimple{
+}
+.buttonRepereHighLight{
+  background-color: red;
+  color : white;
+}
+.hidden{
+  display : none;
+}

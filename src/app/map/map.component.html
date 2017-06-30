@@ -1,0 +1,31 @@
+<!-- (click)="mapClicked($event)" -->
+<div id='map'>
+</div>
+<button (click)="clicked()">test</button>
+<div *ngFor="let ssb of getAsArray(dicoSsbClusters)" class="ssbClusters hidden" [id]="ssb" (click)="clickOnSsbCluster(dicoSsbClusters[ssb])">
+    {{dicoSsbClusters[ssb].properties.point_count}}
+</div>
+
+<div *ngFor="let repere of getAsArray(dicoAloneReperes)"
+ class="aloneReperes hidden"
+ [id]="repere"
+ (click)="clickRepere(dicoAloneReperes[repere],$event)"
+ (mouseover)="mouseOverReperes(dicoAloneReperes[repere],$event)"
+ (mouseleave)="_removePopUp()">
+</div>
+
+<div *ngFor="let cluster of getAsArray(dicoClusterCommune)"
+ class="communeCluster hidden"
+ [id]="cluster"
+ (click)="clickClusterCommune(dicoClusterCommune[cluster],$event)"
+ (mouseover)="mouseOverClusterHighLight(dicoClusterCommune[cluster],$event)"
+ (mouseleave)="mouseLeaveClusterHighLight(dicoClusterCommune[cluster],$event)">
+    {{dicoClusterCommune[cluster].properties.point_count}}
+</div>
+<div class="glyphicon glyphicon-map-marker"></div>
+
+<!--
+<div *ngFor="let cluster of Object.keys(this.tabClusters)" class="">
+  this.tabClusters[cluster]
+</div>
+-->
